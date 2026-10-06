@@ -35,7 +35,7 @@ kle-hackathon-2k26/
 
 1. Create an account at https://www.mongodb.com/cloud/atlas and create a free **M0** cluster.
 2. **Database Access** → Add Database User → username + password (save them).
-3. **Network Access** → Add IP Address → for local testing add your IP; for Vercel add `0.0.0.0/0` (allow from anywhere).
+3. **Network Access** → Add IP Address → for local testing add your IP; for Render or Vercel, `0.0.0.0/0` allows connections from anywhere.
 4. **Database** → Connect → Drivers → copy the connection string. It looks like
    `mongodb+srv://USER:PASSWORD@cluster0.xxxxx.mongodb.net/kle-hackathon?retryWrites=true&w=majority`
    Replace `USER` and `PASSWORD`. If the password has special characters, URL-encode them.
@@ -52,7 +52,7 @@ Gmail allows about 500 emails per day. For more, use Brevo, Mailgun or SendGrid 
 
 **Test it:** `npm run test-mail -- you@example.com` checks the SMTP login and sends a test email.
 
-If `SMTP_HOST` is empty and `NODE_ENV` is not `production`, the code is printed in the server console so you can develop without email. In production (Vercel) SMTP is required.
+If `SMTP_HOST` is empty and `NODE_ENV` is not `production`, the code is printed in the server console so you can develop without email. In production (including Render and Vercel) SMTP is required.
 
 
 ```bash
@@ -72,7 +72,15 @@ Set these in `.env`:
 
 Pages: `/` (site), `/portal.html` (participants), `/admin.html` (admins).
 
-## 3. Deploy to Vercel
+## 3. Deploy to Render
+
+1. Create a **Web Service** in Render and connect this repository. Set the root directory to the project folder containing `package.json`.
+2. Use `npm install` as the build command and `npm start` as the start command. The Express server serves both the API and the files in `public/`.
+3. Add the environment variables from the table above in the Render service settings. In particular, signup requires working `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, and `MAIL_FROM` settings so verification codes can be sent. For Gmail, use an App Password, not the account password.
+4. In MongoDB Atlas **Network Access**, allow connections from the deployed service. For a quick setup, `0.0.0.0/0` allows connections from anywhere; use tighter network rules if your hosting plan supports stable outbound IPs.
+5. Deploy, then check the Render service logs if signup fails. `OTP email failed` indicates an SMTP problem; `Database error` or `Database connection failed` indicates MongoDB configuration or connectivity.
+
+## 4. Deploy to Vercel
 
 1. Push this folder to a GitHub repo (`.env` is git-ignored).
 2. Vercel → Add New Project → import the repo. No build command needed.
