@@ -1,0 +1,113 @@
+/* ==========================================================
+   KLE extras: hero brand + feature chips, footer 3D gallery
+   Loaded AFTER the inline styles in index.html. Purely additive.
+   ========================================================== */
+
+/* ---------- Footer: 3D auto-scrolling gallery ---------- */
+.kle-gallery-wrap{margin:0 -20px 46px;text-align:center}
+.kle-gallery-title{
+  margin:0 0 8px;font-size:clamp(24px,4vw,40px);color:#fff;
+  text-shadow:0 0 10px var(--cy),0 0 30px var(--vi);
+}
+.kle-gallery-sub{margin:0 auto 26px;max-width:60ch;padding:0 20px;color:#c3cbf0;font-size:14px;line-height:1.6;text-shadow:0 1px 10px #050414,0 0 4px #050414}
+
+#kleGallery{
+  position:relative;width:100%;overflow:hidden;
+  height:calc(var(--kg-h,290px) + 90px);
+  perspective:1100px;perspective-origin:50% 40%;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);
+          mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);
+  cursor:grab;touch-action:pan-y;
+}
+#kleGallery:active{cursor:grabbing}
+#kleGallery:after{ /* soft glowing floor */
+  content:"";position:absolute;left:10%;right:10%;bottom:6px;height:34px;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(25,230,255,.32),rgba(138,92,255,.16) 45%,transparent 72%);
+  filter:blur(6px);
+}
+.kg-stage{position:absolute;inset:0;transform-style:preserve-3d}
+.kg-card{
+  position:absolute;left:50%;top:20px;margin:0;overflow:hidden;
+  height:var(--kg-h,290px);
+  border-radius:16px;border:1px solid rgba(255,255,255,.22);
+  background:#0b0a22;
+  box-shadow:0 18px 40px rgba(0,0,0,.55),0 0 26px rgba(25,230,255,.2);
+  will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  user-select:none;-webkit-user-select:none;
+}
+.kg-card img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.kg-card.kg-logo{background:#fff}
+.kg-card.kg-logo img{object-fit:contain;padding:14px}
+.kg-card figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:26px 12px 11px;text-align:left;
+  font:600 12px/1.3 'Chakra Petch',sans-serif;letter-spacing:.03em;color:#fff;
+  background:linear-gradient(180deg,transparent,rgba(4,3,18,.92));
+}
+.kg-card.kg-logo figcaption{display:none}
+
+@media(max-width:760px){
+  .kle-gallery-wrap{margin-bottom:34px}
+  .kg-card figcaption{font-size:11px;padding:22px 10px 9px}
+}
+
+/* ---------- Footer: social links ---------- */
+footer .kle-social{margin:26px auto 6px}
+.kle-social-title{margin:0 auto 14px;max-width:none;font:700 13px 'Chakra Petch',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#ffd166;text-shadow:0 0 14px rgba(255,209,102,.4)}
+.kle-social ul{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 16px;margin:0;padding:0;list-style:none;perspective:800px}
+.kle-soc{--sc:#19e6ff;display:flex;flex-direction:column;align-items:center;gap:7px;width:84px;text-decoration:none;color:var(--mu);font:600 11px/1.25 'Chakra Petch',sans-serif;letter-spacing:.04em;transition:color .25s}
+.kle-soc-ico{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;border:1px solid var(--sc);color:var(--sc);background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.14),rgba(7,6,24,.88) 70%);box-shadow:0 0 16px color-mix(in srgb,var(--sc) 30%,transparent),inset 0 1px rgba(255,255,255,.12);transition:transform .3s cubic-bezier(.175,.885,.32,1.275),box-shadow .3s,background .3s,color .3s}
+.kle-soc-ico svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.kle-soc:hover,.kle-soc:focus-visible{color:#fff}
+.kle-soc:hover .kle-soc-ico,.kle-soc:focus-visible .kle-soc-ico{transform:translateY(-6px) rotateX(12deg) scale(1.1);background:var(--sc);color:#05041a;box-shadow:0 14px 28px rgba(0,0,0,.45),0 0 28px var(--sc)}
+.kle-fb{--sc:#4a8cff}.kle-ig{--sc:#ff5fa8}.kle-yt{--sc:#ff4d4d}.kle-x{--sc:#e8ecff}.kle-in{--sc:#3fb6ff}
+@media(max-width:420px){.kle-soc{width:74px}.kle-soc-ico{width:48px;height:48px}}
+@media(prefers-reduced-motion:reduce){.kle-soc-ico{transition:none}.kle-soc:hover .kle-soc-ico{transform:none}}
+
+/* ---------- Footer: learning & career support (image descriptions) ---------- */
+.kle-offer{max-width:1180px;margin:0 auto 54px;padding:0 6vw;min-height:0;display:block;text-align:center}
+.kle-offer-head{margin:0 auto 30px;max-width:70ch}
+.kle-offer-logo{display:inline-block;margin-bottom:16px;padding:8px 18px;border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.kle-offer-logo img{display:block;height:56px;width:auto;max-width:70vw}
+.kle-offer-head h2{margin:0 0 10px;font-size:clamp(22px,3.4vw,34px);color:#fff;text-shadow:none}
+.kle-offer-head p{margin:0 auto;max-width:62ch;color:#c3cbf0;font-size:14px;line-height:1.65}
+.kle-offer-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;text-align:left}
+.kle-offer-card{display:flex;flex-direction:column;overflow:hidden;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(12,14,38,.78);transition:border-color .25s,transform .25s}
+.kle-offer-card:hover{border-color:rgba(25,230,255,.5);transform:translateY(-3px)}
+.kle-offer-img{height:170px;overflow:hidden;background:#0b0a22}
+.kle-offer-img img{display:block;width:100%;height:100%;object-fit:cover}
+.kle-offer-body{display:flex;flex-direction:column;gap:8px;flex:1;padding:16px 16px 18px}
+.kle-offer-tag{color:#ffd166;font:700 11px 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.kle-offer-body h3{margin:0;color:#fff;font-size:18px;line-height:1.25}
+.kle-offer-body p{margin:0;max-width:none;color:#b4bde6;font-size:13px;line-height:1.6}
+.kle-offer-meta{margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);color:var(--cy);font:600 12px 'Chakra Petch',sans-serif;letter-spacing:.03em}
+@media(max-width:1000px){.kle-offer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.kle-offer-grid{grid-template-columns:1fr}.kle-offer-img{height:190px}.kle-offer-logo img{height:48px}}
+@media(prefers-reduced-motion:reduce){.kle-offer-card{transition:none}.kle-offer-card:hover{transform:none}}
+
+/* ---------- Domain ring: carousel layout + livelier cards (only when JS enables it) ---------- */
+.dc .dc-face{
+  background:
+    radial-gradient(circle at 82% 8%,color-mix(in srgb,var(--domain-accent) 38%,transparent),transparent 46%),
+    linear-gradient(150deg,color-mix(in srgb,var(--domain-accent) 24%,#101a3c),#070a24 82%);
+  border-color:color-mix(in srgb,var(--domain-accent) 60%,transparent);
+  box-shadow:inset 0 1px rgba(255,255,255,.16),0 14px 32px rgba(0,0,0,.4),0 0 26px color-mix(in srgb,var(--domain-accent) 32%,transparent);
+}
+.dc h3{font-size:19px;text-shadow:0 0 14px color-mix(in srgb,var(--domain-accent) 55%,transparent)}
+.dc-emblem{box-shadow:0 0 24px color-mix(in srgb,var(--domain-accent) 55%,transparent),inset 0 0 16px rgba(255,255,255,.12)}
+@media(min-width:960px){
+  .domain-stage.kd-on{height:724px}
+  .domain-stage.kd-on #dg.grid{animation:none!important;transform:none!important;transform-style:flat!important;z-index:auto!important;perspective:none}
+  .domain-stage.kd-on #dg:hover,.domain-stage.kd-on #dg:focus-within{animation:none!important}
+  .domain-stage.kd-on #dg .dc{animation:none!important;width:212px;height:222px;will-change:transform,opacity}
+  .domain-stage.kd-on #dg .dc-face{animation:none!important;transform:none!important;backface-visibility:visible;transition:box-shadow .3s,border-color .3s,transform .3s}
+  .domain-stage.kd-on #dg .dc-face:after{display:none}
+  .domain-stage.kd-on #dg .dc:hover .dc-face,.domain-stage.kd-on #dg .dc:focus-visible .dc-face{transform:translateY(-8px)!important;border-color:var(--domain-accent);box-shadow:inset 0 1px rgba(255,255,255,.2),0 26px 50px rgba(0,0,0,.5),0 0 44px var(--domain-accent)}
+  .domain-stage.kd-on #dg .dc.kd-front .dc-face{border-color:var(--domain-accent);box-shadow:inset 0 1px rgba(255,255,255,.2),0 22px 44px rgba(0,0,0,.5),0 0 38px color-mix(in srgb,var(--domain-accent) 70%,transparent)}
+  .domain-stage.kd-on .domain-center{z-index:3}
+}
+
+/* readability of small hero text on the brighter scene */
+#hero .sub{color:#e4eaff;text-shadow:0 1px 12px #07052a,0 0 4px #07052a}
+nav a{text-shadow:0 1px 8px #07052a}
+#hero p{text-shadow:0 1px 12px #040822,0 0 3px #040822}
+nav a{color:#e6efff}

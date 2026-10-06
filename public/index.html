@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KLE Inter College Hackathon 2K26 | 10–11 Oct 2026</title>
+<meta name="description" content="KLE Inter College Hackathon 2K26 — 10 & 11 October 2026. Build in Healthcare, Fintech, AgriTech, EdTech, Sustainability, Cybersecurity, AI/ML or Open Innovation. Register your team.">
+<meta property="og:title" content="KLE Inter College Hackathon 2K26"><meta property="og:type" content="website">
+<meta name="theme-color" content="#0a0d24">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0d24;--cy:#19e6ff;--vi:#8a5cff;--mg:#ff3df2;--tx:#e8ecff;--mu:#9aa3d6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:60px}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Sora,system-ui,sans-serif;font-weight:300;overflow-x:hidden}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:60;pointer-events:none}
+main{position:relative;z-index:2}
+h1,h2,h3,.d{font-family:'Chakra Petch',sans-serif;margin:0}
+#tick{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;height:34px;z-index:20;background:rgba(7,6,20,.8);backdrop-filter:blur(8px);border-bottom:1px solid rgba(25,230,255,.25);overflow:hidden;display:flex;align-items:center;font-size:13px;color:var(--cy)}
+#tick span{white-space:nowrap;padding-left:100%;animation:mq 38s linear infinite}
+@keyframes mq{to{transform:translateX(-100%)}}
+nav{position:fixed;top:calc(34px + env(safe-area-inset-top,0px));left:0;right:0;z-index:19;display:flex;gap:18px;justify-content:center;padding:10px;font-size:13px;overflow-x:auto}
+nav a{color:var(--mu);text-decoration:none;white-space:nowrap}nav a:hover{color:var(--cy)}
+section{min-height:100vh;padding:110px 6vw 60px;display:flex;flex-direction:column;justify-content:center;max-width:1180px;margin:auto}
+.g{position:relative;background:linear-gradient(145deg,rgba(26,24,66,.65),rgba(12,10,34,.75));backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(138,92,255,.25);border-top-color:rgba(255,255,255,.15);border-left-color:rgba(255,255,255,.1);border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.15),0 0 30px rgba(138,92,255,.1);overflow:hidden;transition:transform .3s cubic-bezier(.175,.885,.32,1.275),box-shadow .3s,border-color .3s}
+.g:hover{transform:translateY(-4px);border-color:rgba(25,230,255,.4);box-shadow:0 16px 50px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.25),0 0 40px rgba(25,230,255,.2)}
+.g::after{content:"";position:absolute;top:0;left:-150%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);transform:skewX(-25deg);transition:left .7s ease;pointer-events:none}
+.g:hover::after{left:150%}
+#hero{align-items:center;text-align:center}
+#hero h1{font-size:clamp(34px,8.2vw,92px);line-height:1;font-weight:700;letter-spacing:.02em;color:#eaffff;text-shadow:0 0 8px var(--cy),0 0 28px var(--cy),0 0 70px var(--vi)}
+#hero h1 b{display:block;font-size:.62em;color:#fff;text-shadow:0 0 10px var(--mg),0 0 40px var(--vi);letter-spacing:.18em}
+#hero .hero-kicker{margin:22px 0 6px;color:#ffd166;font:700 15px 'Chakra Petch';text-shadow:0 0 16px rgba(255,209,102,.45)}
+#hero .hero-slogan{margin:0 0 16px;color:var(--tx);font:600 20px Sora}
+.sub{margin:18px 0 28px;color:var(--mu);font-size:clamp(14px,2.2vw,18px)}
+#cd{display:flex;gap:12px;justify-content:center;margin-bottom:34px}
+#cd div{padding:12px 14px;min-width:70px}#cd b{display:block;font:700 28px 'Chakra Petch';color:var(--cy)}#cd small{color:var(--mu)}
+.cta{position:relative;width:170px;height:170px;perspective:600px;cursor:pointer;border:0;background:none;color:#fff;font:700 15px 'Chakra Petch';letter-spacing:.1em}
+.cta i{position:absolute;inset:0;border-radius:50%;border:3px solid var(--cy);box-shadow:0 0 25px var(--cy),inset 0 0 25px var(--vi);animation:sp 6s linear infinite}
+.cta i:nth-child(2){inset:14px;border-color:var(--mg);box-shadow:0 0 22px var(--mg),inset 0 0 22px var(--mg);animation-duration:4s;animation-direction:reverse}
+.cta i:nth-child(3){inset:30px;border-color:var(--vi);animation-duration:9s}
+.cta span{position:relative;text-shadow:0 0 12px var(--cy)}.cta:hover i{filter:brightness(1.6)}
+@keyframes sp{from{transform:rotateX(65deg) rotateZ(0)}to{transform:rotateX(65deg) rotateZ(360deg)}}
+.cta:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible{outline:2px solid var(--cy);outline-offset:3px}
+h2{font-size:clamp(28px,5vw,52px);margin-bottom:22px;text-shadow:0 0 20px rgba(25,230,255,.5)}
+p{line-height:1.7;max-width:62ch}
+.two{display:grid;grid-template-columns:1.4fr 1fr;gap:24px}.pad{padding:26px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;perspective:900px}
+.domain-stage{position:relative;display:flex;flex-direction:column;align-items:center;gap:14px}
+.domain-center{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;width:220px;height:286px;flex:none;pointer-events:none}
+#cup3d{display:block;width:210px;height:245px}
+.domain-cup-mark{position:absolute;top:39%;left:0;width:100%;transform:translateY(-50%);color:#fff;text-align:center;font:700 25px 'Chakra Petch';text-shadow:0 0 14px rgba(255,255,255,.7)}
+.domain-center strong{margin-top:-4px;color:#ffd166;font:700 15px 'Chakra Petch';text-align:center;text-shadow:0 0 14px rgba(255,190,55,.5)}
+.dc{min-width:0;cursor:pointer;outline:none}
+.dc-face{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;overflow:hidden;padding:14px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:radial-gradient(circle at 82% 8%,rgba(53,224,192,.11),transparent 36%),linear-gradient(150deg,rgba(20,29,52,.85),rgba(6,9,28,.95));box-shadow:inset 0 1px rgba(255,255,255,.12),0 14px 32px rgba(0,0,0,.32),0 0 22px rgba(25,230,255,.08);backdrop-filter:blur(10px);transition:transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow .4s, border-color .4s, background .4s; transform-style:preserve-3d;}
+.dc-face:before{content:"";position:absolute;inset:0 14px auto;height:2px;background:linear-gradient(90deg,transparent,var(--domain-accent),transparent);box-shadow:0 0 14px var(--domain-accent)}
+.dc-face:after{content:"";position:absolute;top:28px;right:-34px;width:102px;height:102px;border:1px solid var(--domain-accent);border-radius:50%;opacity:.14;pointer-events:none; transition:transform 0.5s;}
+.dc-head{position:relative;z-index:1;display:flex;width:100%;align-items:center;justify-content:space-between;gap:8px; transform:translateZ(10px);}
+.dc-index{color:var(--domain-accent);font:700 12px 'Chakra Petch';letter-spacing:1px; text-shadow: 0 0 8px var(--domain-accent);}
+.dc-type{color:var(--mu);font:600 9px Sora;letter-spacing:1px}
+.dc-emblem{position:relative;z-index:1;display:grid;place-items:center;width:58px;height:58px;margin-left:4px;border:1px solid var(--domain-accent);border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.12),rgba(5,8,24,.86) 72%);box-shadow:0 0 20px rgba(25,230,255,.15),inset 0 0 16px rgba(255,255,255,.1); transform:translateZ(20px);}
+.dc-emblem:after{content:"";position:absolute;inset:5px;border:1px solid var(--domain-accent);border-radius:50%;opacity:.5}
+.dc svg{position:relative;z-index:1;width:29px;height:29px;stroke:var(--domain-accent);fill:none;stroke-width:1.7;filter:drop-shadow(0 0 7px var(--domain-accent));transition:transform .35s,filter .35s}
+.dc:hover .dc-face,.dc:focus-visible .dc-face{border-color:var(--domain-accent);background:radial-gradient(circle at 82% 8%,rgba(255,255,255,.1),transparent 36%),linear-gradient(150deg,rgba(20,29,52,.98),rgba(6,9,28,.98));box-shadow:inset 0 1px rgba(255,255,255,.18),0 22px 50px rgba(0,0,0,.5),0 0 35px var(--domain-accent); transform:scale(1.05) translateZ(30px) translateY(-10px);}
+.dc:hover .dc-face:after{transform:scale(1.2) rotate(15deg); opacity:0.3;}
+.dc:hover .dc svg,.dc:focus-visible .dc svg{transform:scale(1.15) rotate(5deg);filter:drop-shadow(0 0 12px var(--domain-accent))}
+.dc h3{position:relative;z-index:1;margin:0;color:#f3f7ff;font-size:18px;line-height:1.15; transform:translateZ(15px); text-shadow:0 0 10px rgba(255,255,255,0.2);}
+.dc .x{position:relative;z-index:1;width:100%;max-height:0;overflow:hidden;color:var(--mu);font-size:12px;line-height:1.4;transition:max-height .4s cubic-bezier(0, 1, 0, 1),margin .4s, opacity .3s; opacity:0; transform:translateZ(10px);}.dc.o .x{max-height:140px;margin-top:10px; opacity:1; transition:max-height .4s ease-in-out, margin .4s, opacity .4s .1s;}
+.dc-description{margin:0 0 12px;line-height:1.4}
+.dc button{width:100%;margin-top:0;padding:8px 12px;border:1px solid var(--domain-accent);background:rgba(7,9,27,.88);color:var(--domain-accent);box-shadow:0 0 14px rgba(25,230,255,.1);font-size:12px; cursor:pointer; font-family:'Chakra Petch'; letter-spacing:1px; text-transform:uppercase; transition:all .3s;}
+.dc button:hover{background:var(--domain-accent); color:#000; box-shadow:0 0 20px var(--domain-accent);}
+@keyframes domain-orbit{from{transform:rotateX(30deg) rotateZ(0deg)}to{transform:rotateX(30deg) rotateZ(360deg)}}
+@keyframes domain-face{from{transform:rotateZ(var(--counter-angle)) rotateX(-30deg)}to{transform:rotateZ(calc(var(--counter-angle) - 360deg)) rotateX(-30deg)}}
+@keyframes domain-float{0%,100%{transform:translate(-50%,-50%) rotateZ(var(--domain-angle)) translateY(calc(0px - var(--domain-radius))) translateZ(0);} 50%{transform:translate(-50%,-50%) rotateZ(var(--domain-angle)) translateY(calc(0px - var(--domain-radius))) translateZ(20px);}}
+@media(min-width:960px){
+ .domain-stage{display:block;height:840px;perspective:1200px}
+ .domain-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+ #dg.grid{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:1100px;margin:auto;perspective:none;transform-style:preserve-3d;animation:domain-orbit 55s linear infinite;z-index:2}
+ #dg:hover,#dg:focus-within{animation-play-state:paused}
+ #dg .dc{--domain-radius:clamp(290px,21.5vw,380px);position:absolute;top:50%;left:50%;width:200px;height:210px;margin:0;padding:0;transform:translate(-50%,-50%) rotateZ(var(--domain-angle)) translateY(calc(0px - var(--domain-radius)));transform-style:preserve-3d; animation:domain-float 4s ease-in-out infinite alternate; animation-delay:calc(var(--domain-angle) * 0.01s);}
+ #dg .dc-face{height:100%;transform:rotateZ(var(--counter-angle)) rotateX(-30deg);animation:domain-face 55s linear infinite;backface-visibility:hidden}
+ #dg:hover .dc-face,#dg:focus-within .dc-face{animation-play-state:paused}
+}
+@media(prefers-reduced-motion:reduce){
+ .domain-stage{height:auto;display:flex;flex-direction:column;gap:14px;perspective:none}
+ .domain-center{position:relative;top:auto;left:auto;transform:none}
+ #dg.grid{position:relative;inset:auto;display:grid;height:auto;max-width:none;perspective:none;transform:none;animation:none}
+ #dg .dc{position:relative;top:auto;left:auto;width:auto;height:auto;margin:0;padding:0;transform:none;animation:none}
+ #dg .dc-face{height:auto;transform:none;animation:none}
+}
+.btn{background:linear-gradient(90deg,var(--cy),var(--vi));color:#05041a;border:0;border-radius:8px;padding:11px 20px;font:700 14px 'Chakra Petch';cursor:pointer;box-shadow:0 0 18px rgba(25,230,255,.45)}
+.btn.s{padding:7px 12px;font-size:12px}
+.tl{position:relative;display:grid;grid-template-columns:1fr;gap:16px;padding:0 0 0 32px}
+.tl:before{content:"";position:absolute;left:8px;top:12px;bottom:12px;width:2px;background:linear-gradient(180deg,var(--cy),#ffd166,var(--mg));box-shadow:0 0 14px rgba(25,230,255,.45);border-radius:3px}
+.tm{position:relative;display:flex;flex-direction:column;min-height:180px;padding:20px;transition:transform .3s,border-color .3s,box-shadow .3s;transform-style:preserve-3d}
+.tm:hover{transform:translateX(5px);border-color:rgba(25,230,255,.7);box-shadow:0 16px 38px rgba(25,230,255,.16)}
+.tm:before{content:"";position:absolute;left:-30px;top:26px;transform:none;width:17px;height:17px;border-radius:50%;background:#ffd166;border:3px solid var(--bg);box-shadow:0 0 0 2px #ffd166,0 0 18px rgba(255,209,102,.75)}
+.tm-index{margin-bottom:14px;color:#ffd166;font:700 12px 'Chakra Petch'}
+.tm time{color:var(--cy);font:700 14px 'Chakra Petch'}
+.tm h3{margin-top:12px;font-size:22px}
+.tm p{margin:10px 0 0;color:var(--mu)}
+form{display:grid;gap:14px;padding:26px}
+.r{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:grid;gap:6px;font-size:13px;color:var(--mu)}
+input,select,textarea{background:rgba(5,4,26,.7);border:1px solid rgba(138,92,255,.5);border-radius:8px;color:var(--tx);padding:11px;font:inherit;width:100%}
+textarea{min-height:100px;resize:vertical}
+.er{color:#ff7ab8;font-size:13px;min-height:16px}
+.pt{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.contact-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(320px,.8fr);gap:22px;align-items:start}
+.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.contact-card{--contact-accent:#35e0c0;position:relative;display:flex;flex-direction:column;min-width:0;min-height:184px;padding:17px;overflow:hidden;border:1px solid var(--contact-accent);background:linear-gradient(145deg,rgba(21,20,51,.96),rgba(7,7,27,.97));box-shadow:inset 0 1px rgba(255,255,255,.1),0 12px 28px rgba(0,0,0,.25);transition:transform .25s,box-shadow .25s,border-color .25s}
+.contact-card:before{content:"";position:absolute;left:17px;right:17px;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--contact-accent),transparent);box-shadow:0 0 12px var(--contact-accent)}
+.contact-card:hover{transform:translateY(-5px);box-shadow:inset 0 1px rgba(255,255,255,.14),0 18px 36px rgba(0,0,0,.34),0 0 22px rgba(25,230,255,.12)}
+.contact-bca{--contact-accent:#35e0c0}.contact-faculty{--contact-accent:#ffb547}.contact-bba{--contact-accent:#ff6b63}.contact-student-one{--contact-accent:#71b9ff}.contact-student-two{--contact-accent:#b59cff}
+.contact-card-top{display:flex;align-items:center;gap:11px;min-height:42px}
+.contact-mark{display:grid;place-items:center;flex:none;width:42px;height:42px;border:1px solid var(--contact-accent);border-radius:50%;background:rgba(255,255,255,.045);color:var(--contact-accent);font:700 13px 'Chakra Petch';box-shadow:inset 0 0 15px rgba(255,255,255,.04),0 0 14px rgba(25,230,255,.08)}
+.contact-role{display:block;color:var(--contact-accent);font:700 10px 'Chakra Petch';letter-spacing:1px;text-transform:uppercase}
+.contact-card h3{margin:16px 0 13px;font-size:19px;line-height:1.15}
+.contact-phone{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding:10px 11px;border:1px solid rgba(255,255,255,.1);border-radius:8px;background:rgba(255,255,255,.045);color:var(--tx);font-size:14px;text-decoration:none;transition:background .2s,border-color .2s,color .2s}
+.contact-phone span{color:var(--contact-accent);font:700 10px 'Chakra Petch';letter-spacing:1px}
+.contact-phone strong{font-weight:600}
+.contact-phone:hover{border-color:var(--contact-accent);background:rgba(255,255,255,.09);color:#fff}
+.contact-form{width:100%;max-width:none;align-content:start}
+.map-card{margin-top:22px;padding:20px}
+.map-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px}
+.map-head h3{font-size:22px}
+.map-link{font-size:13px;text-decoration:none;border:1px solid rgba(25,230,255,.45);border-radius:99px;padding:8px 12px}
+.map-link:hover{background:rgba(25,230,255,.1)}
+.map-frame{display:block;width:100%;height:340px;border:1px solid rgba(138,92,255,.4);border-radius:10px}
+#modal{position:fixed;inset:0;z-index:50;background:rgba(3,2,14,.8);display:none;align-items:center;justify-content:center;padding:20px;overflow:auto}
+#modal.on{display:flex}#modal>div{max-width:560px;width:100%;padding:28px;text-align:center}
+footer{position:relative;z-index:2;text-align:center;padding:100px 20px 60px;color:var(--mu);background:linear-gradient(180deg,rgba(2,2,5,1) 0%,rgba(12,22,60,.4) 15%,rgba(12,22,60,.6) 85%,rgba(2,2,5,.95) 100%),url('campus.jpg') center/cover fixed no-repeat;border-top:1px solid rgba(25,230,255,.2);box-shadow:inset 0 20px 50px rgba(0,0,0,.5)}
+footer .d{font-size:clamp(20px,4vw,34px);color:#fff;text-shadow:0 0 10px var(--cy),0 0 30px var(--vi);animation:fl 4s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-10px)}}
+a{color:var(--cy)}
+@media(max-width:760px){.two,.r,.contact-layout,.contact-grid{grid-template-columns:1fr}section{padding-top:120px}nav{justify-content:flex-start}}
+@media(max-width:760px){
+ .two,.r{grid-template-columns:1fr}
+ section{padding-top:120px}
+ .tl{grid-template-columns:1fr;gap:16px;padding:0 0 0 30px}
+ .tl:before{left:8px;right:auto;top:12px;bottom:12px;width:2px;height:auto;background:linear-gradient(180deg,var(--cy),#ffd166,var(--mg))}
+ .tm{min-height:0;padding:20px}
+ .tm:before{left:-30px;top:26px;transform:none}
+ html{scroll-padding-top:120px}
+ nav{justify-content:center;flex-wrap:wrap;gap:4px 6px;padding:8px 10px;overflow:visible;background:rgba(7,6,20,.84);backdrop-filter:blur(10px);border-bottom:1px solid rgba(25,230,255,.25)}
+ nav a{padding:4px 7px;border:1px solid rgba(138,92,255,.35);border-radius:99px;font-size:12px;transition:color .18s,border-color .18s,background .18s}
+ nav a:hover,nav a:focus-visible{color:#eaffff;border-color:var(--cy);background:rgba(25,230,255,.1);outline:none}
+ .map-head{align-items:flex-start;flex-direction:column}
+ .map-frame{height:270px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+<link rel="stylesheet" href="kle-extras.css">
+</head><body>
+<canvas id="gl"></canvas><canvas id="fx"></canvas>
+<div id="tick" class="d"><span id="tk"></span></div>
+<nav class="d"><a href="#hero">Home</a><a href="#about">About</a><a href="#domains">Domains</a><a href="#timeline">Timeline</a><a href="#register">Register</a><a href="#portals">Portals</a><a href="#contact">Contact</a><a href="#college">Our College</a></nav>
+<main>
+<section id="hero">
+ <h1><b>KLE INTER COLLEGE</b>HACKATHON 2K26</h1>
+ <p class="hero-kicker">WHERE INNOVATION MEETS ACTION</p>
+ <p class="hero-slogan">Ideas That Make a Difference.</p>
+ <p class="sub">Eight domains of ideas. Two days. One campus. 10 &amp; 11 October 2026.</p>
+ <div id="cd" aria-live="off"></div>
+ <button class="cta" id="open" aria-label="Register now"><i></i><i></i><i></i><span>REGISTER<br>NOW</span></button>
+</section>
+
+<section id="about"><h2>About the hackathon</h2>
+ <div class="two"><div class="g pad"><p>KLE Inter College Hackathon 2K26 is conducted by the Department of BCA and is open exclusively to students of KLE BCA College, Mahalingpur. Build a team, choose a domain, and ship a working prototype in front of the judges.</p><p>Our vision: turn classroom skills into products that solve real problems in healthcare, farming, finance, learning and beyond.</p></div>
+ <div class="g pad"><h3>Organizers</h3><p>Shivanand Patil <span style="color:var(--mu)">· BCA Coordinator</span><br>Shirish Sir <span style="color:var(--mu)">· BBA Coordinator</span></p><p style="color:var(--mu)">Teams of 2 to 4 · KLE BCA College students only · Any stack</p></div></div>
+</section>
+
+<section id="domains"><h2>Choose your domain</h2><div class="domain-stage"><div class="domain-center" role="img" aria-label="Static gold hackathon trophy"><canvas id="cup3d" aria-hidden="true"></canvas><span class="domain-cup-mark" aria-hidden="true">&lt;/&gt;</span><strong>HACK THE FUTURE</strong></div><div class="grid" id="dg"></div></div></section>
+
+<section id="timeline"><h2>Event timeline</h2><div class="tl">
+ <div class="g tm"><span class="tm-index">01 / OPENING</span><time>10 Oct 2026 · 11:00 AM</time><h3>Hackathon Kickoff</h3><p>Opening ceremony, rules briefing, and the clock starts.</p></div>
+ <div class="g tm"><span class="tm-index">02 / REVIEW</span><time>10 Oct 2026 · 6:00 PM</time><h3>First Judging Round</h3><p>Show your progress and get feedback from the judges.</p></div>
+ <div class="g tm"><span class="tm-index">03 / FINALE</span><time>11 Oct 2026 · 9:00 PM</time><h3>Final Judging &amp; Results</h3><p>Final demos, then the winners are announced.</p></div></div>
+</section>
+
+<section id="register"><h2>Register your team</h2>
+ <div class="g pad" style="padding:28px;max-width:640px"><p>Create a participant account, then register your team of 2 to 4 with your chosen domain. You can track approval and edit your details any time.</p>
+ <p><a class="btn" style="text-decoration:none;display:inline-block" href="portal.html">Sign up and register</a> <a class="btn" style="text-decoration:none;display:inline-block;background:none;border:1px solid var(--cy);color:var(--cy);box-shadow:none" href="portal.html">Participant log in</a></p></div>
+</section>
+
+<section id="portals"><h2>Two portals</h2><div class="pt">
+ <div class="g pad"><h3>Participant portal</h3><p>Sign up, register your team, edit details and watch your approval status.</p><p><a class="btn" style="text-decoration:none;display:inline-block" href="portal.html">Open participant portal</a></p></div>
+ <div class="g pad"><h3>Admin portal</h3><p>Review teams, approve or reject, see stats, export CSV and post announcements.</p><p><a class="btn" style="text-decoration:none;display:inline-block" href="admin.html">Open admin portal</a></p></div></div>
+</section>
+
+<section id="contact"><h2>Contact</h2>
+ <div class="contact-layout"><div class="contact-grid">
+    <article class="g contact-card contact-bca"><div class="contact-card-top"><span class="contact-mark" aria-hidden="true">SP</span><span class="contact-role">BCA Coordinator</span></div><h3>Shivanand Patil</h3><a class="contact-phone" href="tel:8904601004" aria-label="Call Shivanand Patil at 8904601004"><span>CALL</span><strong>8904601004</strong></a></article>
+    <article class="g contact-card contact-faculty"><div class="contact-card-top"><span class="contact-mark" aria-hidden="true">VB</span><span class="contact-role">Assistant Professor</span></div><h3>Vinayak Badiger</h3><a class="contact-phone" href="tel:8105582503" aria-label="Call Vinayak Badiger at 8105582503"><span>CALL</span><strong>8105582503</strong></a></article>
+    <article class="g contact-card contact-bba"><div class="contact-card-top"><span class="contact-mark" aria-hidden="true">SS</span><span class="contact-role">BBA Coordinator</span></div><h3>Shirish Sir</h3><a class="contact-phone" href="tel:9353966996" aria-label="Call Shirish Sir at 9353966996"><span>CALL</span><strong>9353966996</strong></a></article>
+    <article class="g contact-card contact-student-one"><div class="contact-card-top"><span class="contact-mark" aria-hidden="true">IM</span><span class="contact-role">Student Coordinator</span></div><h3>Irappa Mali</h3><a class="contact-phone" href="tel:9380929684" aria-label="Call Irappa Mali at 9380929684"><span>CALL</span><strong>9380929684</strong></a></article>
+    <article class="g contact-card contact-student-two"><div class="contact-card-top"><span class="contact-mark" aria-hidden="true">VK</span><span class="contact-role">Student Coordinator</span></div><h3>Vishal K</h3><a class="contact-phone" href="tel:8660108587" aria-label="Call Vishal K at 8660108587"><span>CALL</span><strong>8660108587</strong></a></article>
+ </div>
+ <form class="g contact-form" id="cf"><label>Name<input required></label><label>Email<input type="email" required></label><label>Message<textarea required></textarea></label><button class="btn" type="submit">Send message</button><div class="er" id="ce" style="color:var(--cy)"></div></form></div>
+ <div class="g map-card"><div class="map-head"><h3>Find KLE BCA College</h3><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=KLE+BCA+College%2C+Mahalingpur%2C+Karnataka+587312" target="_blank" rel="noopener noreferrer">Open in Google Maps</a></div><iframe class="map-frame" title="Map to KLE BCA College, Mahalingpur 587312" src="https://maps.google.com/maps?q=KLE%20BCA%20College%2C%20Mahalingpur%2C%20Karnataka%20587312&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+</section>
+</main>
+<footer id="college">
+<div class="kle-gallery-wrap"><h2 class="kle-gallery-title">Life at KLE BCA</h2><p class="kle-gallery-sub">Workshops, certificate courses, hackathon preparation and placement training, all on our campus.</p><div id="kleGallery" role="region" aria-label="KLE BCA campus photo gallery"><div class="kg-stage"></div></div></div>
+<section class="kle-offer" aria-labelledby="kleOfferTitle"><div class="kle-offer-head"><span class="kle-offer-logo"><img src="kle-logo.jpg" alt="KLE Society - BCA-BBA College, Mahalingpur" width="651" height="312" loading="lazy"></span><h2 id="kleOfferTitle">Learning &amp; Career Support at KLE BCA</h2><p>Workshops, certificate courses, hackathon preparation and placement training are provided to our students throughout the academic year.</p></div><div class="kle-offer-grid"><article class="kle-offer-card"><div class="kle-offer-img"><img src="gallery-seminar.jpg" alt="Semester-wise Workshops" loading="lazy" style="object-position:50% 0%"></div><div class="kle-offer-body"><span class="kle-offer-tag">01 · Workshops</span><h3>Semester-wise Workshops</h3><p>Workshops and seminars are conducted semester-wise. A recent seminar on Data Science with Machine Learning was held for 5th semester BCA students.</p><span class="kle-offer-meta">Seminar · 22 Aug 2026</span></div></article><article class="kle-offer-card"><div class="kle-offer-img"><img src="gallery-lab.jpg" alt="Certificate Courses" loading="lazy" style="object-position:50% 50%"></div><div class="kle-offer-body"><span class="kle-offer-tag">02 · Certificate Courses</span><h3>Certificate Courses</h3><p>Certificate courses are offered semester-wise, and students practise on computers in the well-equipped BCA computer lab.</p><span class="kle-offer-meta">Semester-wise · BCA Computer Lab</span></div></article><article class="kle-offer-card"><div class="kle-offer-img"><img src="gallery-ekathva.jpg" alt="Hackathon Preparation" loading="lazy" style="object-position:50% 50%"></div><div class="kle-offer-body"><span class="kle-offer-tag">03 · Hackathon Preparation</span><h3>Hackathon Preparation</h3><p>Students are prepared before contest day and take part in inter-collegiate competitions such as Ekathva 2.0, alongside this KLE Inter College Hackathon.</p><span class="kle-offer-meta">Inter-collegiate · Ekathva 2.0</span></div></article><article class="kle-offer-card"><div class="kle-offer-img"><img src="gallery-placement.jpg" alt="Pre-Placement Training" loading="lazy" style="object-position:50% 0%"></div><div class="kle-offer-body"><span class="kle-offer-tag">04 · Placement Training</span><h3>Pre-Placement Training</h3><p>Pre-placement training sessions are conducted to get students ready for placements, including a dedicated programme for V semester.</p><span class="kle-offer-meta">V Semester · AY 2026-27</span></div></article></div></section>
+<div class="d">Developed by Irappa M &amp; Vishal K</div><address style="margin:12px auto 0;color:var(--tx);font-style:normal;font-size:14px">KLE BCA College, Mahalingpur - 587312</address><div class="kle-social" role="navigation" aria-label="KLE BCA Mahalingpur on social media"><p class="kle-social-title">Follow KLE BCA Mahalingpur</p><ul><li><a class="kle-soc kle-fb" href="https://www.facebook.com/klebcamahalingpur/" target="_blank" rel="noopener noreferrer" aria-label="KLE BCA Mahalingpur Facebook Page" title="KLE BCA Mahalingpur Facebook Page"><span class="kle-soc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 8.5h3V4.5h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4v-2a.5.5 0 0 1 .5-.5z" fill="currentColor" stroke="none"/></svg></span><span class="kle-soc-txt">Facebook Page</span></a></li><li><a class="kle-soc kle-fb" href="https://www.facebook.com/klebcamahalingapura/" target="_blank" rel="noopener noreferrer" aria-label="KLE BCA Mahalingapur Facebook Channel" title="KLE BCA Mahalingapur Facebook Channel"><span class="kle-soc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 8.5h3V4.5h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4v-2a.5.5 0 0 1 .5-.5z" fill="currentColor" stroke="none"/></svg></span><span class="kle-soc-txt">Facebook Channel</span></a></li><li><a class="kle-soc kle-ig" href="https://www.instagram.com/reel/DXIpI_2EZsc/" target="_blank" rel="noopener noreferrer" aria-label="klebcamahalingpur on Instagram" title="klebcamahalingpur on Instagram"><span class="kle-soc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></span><span class="kle-soc-txt">Instagram</span></a></li><li><a class="kle-soc kle-yt" href="https://www.youtube.com/channel/UCCgTnidNf4MXTagEMiCt2Xg" target="_blank" rel="noopener noreferrer" aria-label="KLE BCA Mahalingapur YouTube Channel" title="KLE BCA Mahalingapur YouTube Channel"><span class="kle-soc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4.5"/><path d="M10 9.2v5.6l5-2.8z" fill="currentColor" stroke="none"/></svg></span><span class="kle-soc-txt">YouTube</span></a></li><li><a class="kle-soc kle-x" href="https://x.com/klebcamlp" target="_blank" rel="noopener noreferrer" aria-label="@klebcamlp on X" title="@klebcamlp on X"><span class="kle-soc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4l16 16M20 4l-7.2 7.8M11 13.2L4 20"/></svg></span><span class="kle-soc-txt">X</span></a></li><li><a class="kle-soc kle-in" href="https://www.linkedin.com/school/kle's-s.c.p-arts-and-d.d.-shirol-commerce-college-mahalingpur-pg-/" target="_blank" rel="noopener noreferrer" aria-label="KLE'S S.C.P Arts and D.D. Shirol Commerce College, Mahalingpur (PG) on LinkedIn" title="KLE'S S.C.P Arts and D.D. Shirol Commerce College, Mahalingpur (PG) on LinkedIn"><span class="kle-soc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3.5"/><path d="M8 10.5V16M12 16v-5.5M12 12.8c0-1.5 1-2.4 2.4-2.4S17 11.3 17 13V16"/><circle cx="8" cy="7.6" r=".9" fill="currentColor" stroke="none"/></svg></span><span class="kle-soc-txt">LinkedIn</span></a></li></ul></div><p style="margin:14px auto">© 2026 KLE Inter College Hackathon · <a href="#register">Register</a> · <a href="#timeline">Timeline</a> · <a href="#contact">Contact</a></p></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const IMG="campus.jpg";
+const D=[["Healthcare","M12 21s-8-5-8-11a4.5 4.5 0 018-2.5A4.5 4.5 0 0120 10c0 6-8 11-8 11z","Tools for patients, clinics and care teams."],
+["Fintech","M3 17l6-6 4 4 8-9M15 6h6v6","Payments, lending, budgeting and money safety."],
+["AgriTech","M12 21V9M12 9c0-4 3-6 7-6 0 4-2 7-7 6zM12 13C12 9 9 7 5 7c0 4 2 7 7 6z","Smarter farming, crop and market solutions."],
+["EdTech","M2 9l10-5 10 5-10 5zM6 11v5c3 2 9 2 12 0v-5","Better ways to teach, learn and assess."],
+["Sustainability","M12 3c5 4 6 9 0 18C6 12 7 7 12 3z","Cut waste, save energy, protect nature."],
+["Cybersecurity","M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6zM9 12l2 2 4-4","Defend people, data and systems."],
+["AI/ML","M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3M7 6h10v12H7zM10 10h4v4h-4z","Models and agents that solve real tasks."],
+["Open Innovation","M12 2l3 7 7 .8-5.3 4.8 1.6 7.4L12 18l-6.3 4 1.6-7.4L2 9.8 9 9z","Any idea that matters. Surprise us."]];
+const $=s=>document.querySelector(s),dg=$('#dg'),ds=document.createElement('select');
+function build(){dg.innerHTML='';ds.innerHTML='';const accents=['#35e0c0','#ffb547','#ff6b63','#71b9ff','#79d594','#f08b6b','#b59cff','#f2d16d'];D.forEach(([n,p,t],i)=>{const c=document.createElement('div');c.className='dc';c.tabIndex=0;const angle=i*360/D.length;
+ c.style.setProperty('--domain-angle',angle+'deg');c.style.setProperty('--counter-angle',-angle+'deg');
+ c.style.setProperty('--domain-accent',accents[i%accents.length]);
+ c.innerHTML=`<div class="g dc-face"><div class="dc-head"><span class="dc-index">${String(i+1).padStart(2,'0')}</span><span class="dc-type">DOMAIN / 2K26</span></div><div class="dc-emblem"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${p}"/></svg></div><h3>${n}</h3><div class="x"><p class="dc-description">${t}</p><button class="btn s" type="button">Select domain</button></div></div>`;
+ c.onclick=e=>{if(e.target.tagName==='BUTTON'){location.href='portal.html?domain='+encodeURIComponent(n);return}c.classList.toggle('o')};
+ c.onkeydown=e=>{if(e.key==='Enter')c.classList.toggle('o')};
+ dg.appendChild(c);ds.add(new Option(n,n))})}build();
+function buildDomainCup(){const canvas=$('#cup3d');if(!canvas||!window.THREE)return;let renderer;try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,preserveDrawingBuffer:true})}catch(e){return}renderer.setClearColor(0x000000,0);renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.outputEncoding=THREE.sRGBEncoding;
+ const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(32,1,.1,40);camera.position.set(0,1,4.8);camera.lookAt(0,.92,0);
+ scene.add(new THREE.HemisphereLight(0xfff1c2,0x25253c,1.8));const key=new THREE.DirectionalLight(0xffd166,3);key.position.set(-3,4,4);scene.add(key);const rim=new THREE.DirectionalLight(0x35e0c0,2);rim.position.set(3,2,-3);scene.add(rim);
+ const gold=new THREE.MeshStandardMaterial({color:0xffc64b,metalness:.82,roughness:.22}),bright=new THREE.MeshStandardMaterial({color:0xffe08a,metalness:.88,roughness:.18}),shadow=new THREE.MeshStandardMaterial({color:0x9f5d13,metalness:.76,roughness:.25}),cup=new THREE.Group();
+ const profile=[[0,.68],[.28,.68],[.52,.84],[.7,1.42],[.78,1.5],[.68,1.5],[.55,1.04],[.26,.85],[0,.85]].map(([r,y])=>new THREE.Vector2(r,y));cup.add(new THREE.Mesh(new THREE.LatheGeometry(profile,48),gold));
+ const rimBand=new THREE.Mesh(new THREE.TorusGeometry(.74,.045,10,48),bright);rimBand.rotation.x=Math.PI/2;rimBand.position.y=1.48;cup.add(rimBand);
+ for(const side of [-1,1]){const curve=new THREE.CatmullRomCurve3([[side*.62,1.34,0],[side*1.05,1.48,0],[side*1.12,1.12,0],[side*.66,.98,0]].map(p=>new THREE.Vector3(...p)));cup.add(new THREE.Mesh(new THREE.TubeGeometry(curve,32,.055,10,false),bright))}
+ const stem=new THREE.Mesh(new THREE.CylinderGeometry(.13,.18,.34,32),gold);stem.position.y=.51;cup.add(stem);const foot=new THREE.Mesh(new THREE.CylinderGeometry(.45,.55,.13,40),bright);foot.position.y=.31;cup.add(foot);const base=new THREE.Mesh(new THREE.CylinderGeometry(.3,.4,.12,40),shadow);base.position.y=.18;cup.add(base);scene.add(cup);
+ const render=()=>{const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();renderer.render(scene,camera)};if(window.ResizeObserver)new ResizeObserver(render).observe(canvas);else addEventListener('resize',render);render()}
+buildDomainCup();
+fetch('/api/domains').then(r=>r.json()).then(l=>{if(!Array.isArray(l)||!l.length)return;const ic={};D.forEach(d=>ic[d[0]]=d[1]);const fb=D[7][1],nd=l.map(x=>[x.name,ic[x.name]||fb,x.description||'']);D.length=0;D.push(...nd);build()}).catch(()=>{});
+// announcements ticker
+$('#tk').textContent="Registrations open  •  Kickoff: 10 Oct, 11:00 AM  •  First judging: 10 Oct, 6:00 PM  •  Finals & results: 11 Oct, 9:00 PM  •  Domains: Healthcare, Fintech, AgriTech, EdTech, Sustainability, Cybersecurity, AI/ML, Open Innovation";
+fetch('/api/announcements').then(r=>r.json()).then(a=>{if(Array.isArray(a)&&a.length)$('#tk').textContent=a.map(x=>x.message).join('  •  ')}).catch(()=>{});
+// countdown
+const T=new Date('2026-10-10T11:00:00+05:30').getTime(),cd=$('#cd');
+function tickCd(){let s=Math.max(0,(T-Date.now())/1000|0);const v=[[s/86400|0,'days'],[s/3600%24|0,'hrs'],[s/60%60|0,'min'],[s%60,'sec']];
+ cd.innerHTML=v.map(([a,b])=>`<div class="g"><b>${String(a).padStart(2,'0')}</b><small>${b}</small></div>`).join('')}
+tickCd();setInterval(tickCd,1000);
+$('#open').onclick=()=>location.href='portal.html';
+$('#cf').onsubmit=e=>{e.preventDefault();$('#ce').textContent='Message noted. We will reply by email.';e.target.reset()};
+// confetti
+const fx=$('#fx'),fc=fx.getContext('2d');let P=[];
+function boom(){const w=fx.width=innerWidth,h=fx.height=innerHeight;P=[...Array(160)].map(()=>({x:w/2,y:h/2,vx:(Math.random()-.5)*16,vy:-Math.random()*16-4,s:4+Math.random()*7,r:Math.random()*6,c:['#19e6ff','#8a5cff','#ff3df2','#fff'][Math.random()*4|0],l:140}));
+ (function f(){fc.clearRect(0,0,w,h);P=P.filter(p=>p.l-->0);P.forEach(p=>{p.vy+=.35;p.x+=p.vx;p.y+=p.vy;p.r+=.2;fc.save();fc.translate(p.x,p.y);fc.rotate(p.r);fc.globalAlpha=p.l/140;fc.fillStyle=p.c;fc.shadowColor=p.c;fc.shadowBlur=10;fc.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);fc.restore()});if(P.length)requestAnimationFrame(f)})()}
+// ---------- 3D ----------
+const cv=$('#gl'),R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:false,powerPreference:"high-performance"});R.setPixelRatio(Math.min(devicePixelRatio,2));
+const S=new THREE.Scene();S.background=new THREE.Color(0x020205);S.fog=new THREE.FogExp2(0x020205,0.015);
+const C=new THREE.PerspectiveCamera(60,1,.1,300);
+
+// --- ULTRA-PREMIUM CINEMATIC 3D DESIGN ---
+const envGroup=new THREE.Group();
+const tGeo=new THREE.CylinderGeometry(40,40,200,32,32,true);
+const tMat=new THREE.MeshBasicMaterial({color:0x00ffff,wireframe:true,transparent:true,opacity:0.04,blending:THREE.AdditiveBlending});
+const tunnel=new THREE.Mesh(tGeo,tMat);tunnel.rotation.x=Math.PI/2;tunnel.position.z=-50;envGroup.add(tunnel);
+const gridHelper=new THREE.GridHelper(200,100,0xb026ff,0xb026ff);gridHelper.position.y=-15;
+gridHelper.material.opacity=0.15;gridHelper.material.transparent=true;gridHelper.material.blending=THREE.AdditiveBlending;
+envGroup.add(gridHelper);S.add(envGroup);
+
+const heroTrophy=new THREE.Group();
+const glassMat=new THREE.MeshPhysicalMaterial({color:0xffffff,metalness:0.2,roughness:0.0,transmission:0.95,thickness:1.5,ior:1.2,transparent:true,opacity:1,side:THREE.DoubleSide});
+const sphereGlass=new THREE.Mesh(new THREE.SphereGeometry(1.6,64,64),glassMat);heroTrophy.add(sphereGlass);
+const coreGeo=new THREE.IcosahedronGeometry(0.9,2);
+const coreMat=new THREE.MeshBasicMaterial({color:0xb026ff,wireframe:true,transparent:true,opacity:0.7,blending:THREE.AdditiveBlending});
+const heroCore=new THREE.Mesh(coreGeo,coreMat);heroTrophy.add(heroCore);
+const innerLight=new THREE.PointLight(0x00ffff,3,15);heroTrophy.add(innerLight);
+
+const heroOrbit=new THREE.Group();
+const chromeMat=new THREE.MeshStandardMaterial({color:0xffffff,metalness:1.0,roughness:0.15,emissive:0x111111});
+const neonCyanMat=new THREE.MeshBasicMaterial({color:0x00ffff,transparent:true,opacity:0.8,blending:THREE.AdditiveBlending});
+const neonPurpleMat=new THREE.MeshBasicMaterial({color:0xb026ff,transparent:true,opacity:0.8,blending:THREE.AdditiveBlending});
+
+const r1=new THREE.Mesh(new THREE.TorusGeometry(2.4,0.04,32,128),chromeMat);r1.rotation.x=Math.PI/2;heroOrbit.add(r1);
+const r2=new THREE.Mesh(new THREE.TorusGeometry(2.8,0.015,16,128),neonCyanMat);r2.rotation.y=Math.PI/3;heroOrbit.add(r2);
+const r3=new THREE.Mesh(new THREE.TorusGeometry(3.2,0.1,8,64),new THREE.MeshBasicMaterial({color:0xb026ff,wireframe:true,transparent:true,opacity:0.3,blending:THREE.AdditiveBlending}));r3.rotation.z=Math.PI/4;heroOrbit.add(r3);
+const r4=new THREE.Mesh(new THREE.TorusGeometry(3.6,0.02,16,128),neonPurpleMat);r4.rotation.x=-Math.PI/4;heroOrbit.add(r4);
+
+const crystals=new THREE.Group();const crystalGeo=new THREE.OctahedronGeometry(0.35,0);
+for(let i=0;i<6;i++){const c=new THREE.Mesh(crystalGeo,chromeMat);const a=(i/6)*Math.PI*2;c.position.set(Math.cos(a)*4.2,Math.sin(a)*1.5,Math.sin(a)*4.2);c.rotation.set(Math.random()*Math.PI,Math.random()*Math.PI,0);crystals.add(c);}
+heroOrbit.add(crystals);
+
+const pGeo=new THREE.BufferGeometry();const pCount=2000;const pPos=new Float32Array(pCount*3);const pColors=new Float32Array(pCount*3);
+const colCyan=new THREE.Color(0x00ffff),colLime=new THREE.Color(0x39ff14),colPurple=new THREE.Color(0xb026ff);
+for(let i=0;i<pCount;i++){const r=4+Math.random()*16,t=Math.random()*Math.PI*2,p=Math.acos(Math.random()*2-1);pPos[i*3]=r*Math.sin(p)*Math.cos(t);pPos[i*3+1]=r*Math.sin(p)*Math.sin(t);pPos[i*3+2]=r*Math.cos(p);const randCol=Math.random();const c=randCol<0.33?colCyan:(randCol<0.66?colLime:colPurple);pColors[i*3]=c.r;pColors[i*3+1]=c.g;pColors[i*3+2]=c.b;}
+pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));pGeo.setAttribute('color',new THREE.BufferAttribute(pColors,3));
+const pMat=new THREE.PointsMaterial({size:0.04,vertexColors:true,transparent:true,opacity:0.8,blending:THREE.AdditiveBlending,depthWrite:false});
+const coreParticles=new THREE.Points(pGeo,pMat);heroOrbit.add(coreParticles);
+
+const panels=new THREE.Group();const panelGeo=new THREE.PlaneGeometry(1.8,1.0);
+const panelMat=new THREE.MeshPhysicalMaterial({color:0x00ffff,transmission:0.9,opacity:1,metalness:0.3,roughness:0.1,transparent:true,side:THREE.DoubleSide});
+for(let i=0;i<3;i++){const p=new THREE.Mesh(panelGeo,panelMat);p.position.set((i-1)*3.5,-2.5,-3-Math.abs(i-1));p.rotation.y=(i-1)*-0.4;const edge=new THREE.LineSegments(new THREE.EdgesGeometry(panelGeo),new THREE.LineBasicMaterial({color:0x39ff14,transparent:true,opacity:0.6}));p.add(edge);panels.add(p);}
+heroOrbit.add(panels);
+
+heroTrophy.position.set(0,-0.2,-5.5);heroOrbit.position.set(0,-0.2,-5.5);S.add(heroTrophy);S.add(heroOrbit);
+
+const dirLight=new THREE.DirectionalLight(0xffffff,1.5);dirLight.position.set(5,10,7);S.add(dirLight);
+const blueFill=new THREE.PointLight(0x00ffff,4,25);blueFill.position.set(-5,0,-5);S.add(blueFill);
+const purpleFill=new THREE.PointLight(0xb026ff,4,25);purpleFill.position.set(5,-2,-3);S.add(purpleFill);
+const limeFill=new THREE.PointLight(0x39ff14,2,20);limeFill.position.set(0,6,-8);S.add(limeFill);
+
+const curve=new THREE.CatmullRomCurve3([[-3,-2,-34],[-1,1.5,-40],[2,-1,-46],[4,2,-52],[1,0,-60]].map(a=>new THREE.Vector3(...a)));
+const dataStream=new THREE.Mesh(new THREE.TubeGeometry(curve,100,0.12,8,false),new THREE.MeshBasicMaterial({color:0x00ffff,wireframe:true,transparent:true,opacity:0.2,blending:THREE.AdditiveBlending}));S.add(dataStream);
+const gates=[];[0.15,0.55,0.95].forEach((t)=>{const node=new THREE.Mesh(new THREE.OctahedronGeometry(0.6,0),chromeMat);node.position.copy(curve.getPoint(t));S.add(node);gates.push(node);});
+const pg=new THREE.Group();for(let i=0;i<3;i++){const r=new THREE.Mesh(new THREE.TorusGeometry(3.5-i*.6,.06,16,64),new THREE.MeshBasicMaterial({color:[0x39ff14,0x00ffff,0xb026ff][i],transparent:true,opacity:0.8,blending:THREE.AdditiveBlending}));pg.add(r)}pg.position.set(0,0,-66);S.add(pg);
+
+let mx=0,my=0,sm=0,p=0,heroBaseY=-0.2;addEventListener('mousemove',e=>{mx=e.clientX/innerWidth-0.5;my=e.clientY/innerHeight-0.5;});
+function rs(){R.setSize(innerWidth,innerHeight,false);C.aspect=innerWidth/innerHeight;C.updateProjectionMatrix();const mobile=innerWidth<760,heroOffset=innerWidth>=1024?Math.min(7.2,innerWidth/235):0;heroBaseY=mobile?-2.1:-0.2;heroTrophy.position.set(heroOffset,heroBaseY,-4.8);heroTrophy.scale.setScalar(mobile?0.72:1);heroOrbit.position.set(heroOffset,heroBaseY,-4.8);heroOrbit.scale.setScalar(mobile?0.44:0.62);}
+addEventListener('resize',rs);rs();
+const clk=new THREE.Clock(),still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function loop(){const t=clk.getElapsedTime(),mxs=document.documentElement.scrollHeight-innerHeight;p=mxs>0?scrollY/mxs:0;sm+=(p-sm)*0.06;
+ const z=8-sm*78;C.position.set(Math.sin(sm*7)*1.8+mx*1.2,Math.cos(sm*5)*0.8-my*0.8,z);C.lookAt(Math.sin(sm*7+0.4)*1.4,0,z-10);
+ heroTrophy.rotation.y=t*0.2+mx*0.4;heroTrophy.rotation.x=t*0.15+my*0.4;heroTrophy.position.y=heroBaseY+Math.sin(t)*0.2;
+ heroCore.rotation.y=-t*0.5;heroCore.scale.setScalar(1+Math.sin(t*3.0)*0.1);
+ heroOrbit.rotation.y=t*0.1;heroOrbit.rotation.z=Math.sin(t*0.2)*0.1;
+ crystals.rotation.y=-t*0.3;crystals.children.forEach((c,i)=>{c.rotation.x+=0.02;c.rotation.y+=0.03;c.position.y=Math.sin(t*2+i)*0.8;});
+ coreParticles.rotation.y=t*0.05;coreParticles.rotation.x=t*0.02;
+ tunnel.position.z=z-80+(t*8)%20;gridHelper.position.z=z-80+(t*12)%20;
+ panels.children.forEach((pl,i)=>{pl.position.y=Math.sin(t+i)*0.15-2.0;});
+ gates.forEach(g=>{g.rotation.y+=0.05;g.rotation.x+=0.03;});pg.children.forEach((r,i)=>r.rotation.z=t*(i%2?-1:1)*(0.8+i*0.3));
+ R.render(S,C);if(!still)requestAnimationFrame(loop)}
+if(still){addEventListener('scroll',()=>R.render(S,C))}
+loop();
+</script>
+<script src="kle-extras.js"></script></body></html>

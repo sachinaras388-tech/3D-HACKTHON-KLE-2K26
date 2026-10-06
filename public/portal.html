@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Participant Portal | KLE Hackathon 2K26</title>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head><body>
+<canvas id="bg"></canvas>
+<div class="scene" aria-hidden="true"><div class="ph"></div><div class="gridfx"></div></div><canvas id="fx" style="position:fixed;inset:0;width:100%;height:100%;z-index:60;pointer-events:none"></canvas>
+<div class="wrap">
+ <div class="top"><h1>Participant portal</h1><div><a href="/" class="btn o s" style="text-decoration:none; margin-right:14px">Back</a><button class="btn o s hide" id="lo">Log out</button></div></div>
+
+ <div id="auth" class="hide auth-shell">
+  <section class="hero">
+   <div class="crest"><b>KLE</b>Participant portal</div>
+   <h2 class="big">Inter College<br><span>Hackathon 2K26</span></h2>
+   <p class="lead">Register your team, choose your domain and follow your approval status, all from one portal.</p>
+   <div class="meta"><span><i>&#9670;</i>10 &amp; 11 October 2026</span><span><i>&#9670;</i>KLE campus</span><span><i>&#9670;</i>2 days of building</span></div>
+  </section>
+  <div class="ac">
+  <div class="tabs" id="tbs"><button class="tab on" data-t="lf" type="button">Log in</button><button class="tab" data-t="sf" type="button">Sign up</button></div>
+  <form class="g" id="lf"><h2>Welcome back</h2><p class="sub2">Log in to manage your team registration.</p>
+   <label>Email<input id="le" type="email" autocomplete="username" placeholder="you@college.edu" required></label>
+   <label>Password<span class="pw"><input id="lp" type="password" autocomplete="current-password" placeholder="Your password" required><button type="button" aria-label="Show password">Show</button></span></label>
+   <div class="msg" id="lm" role="alert"></div><button class="btn" type="submit">Log in</button>
+   <p class="foot">New here? <a href="#" data-go="sf">Create an account</a></p></form>
+  <form class="g hide" id="sf"><h2>Create your account</h2><p class="sub2">Takes under a minute. We verify your email next.</p>
+   <label>Your name<input id="sn" autocomplete="name" placeholder="Full name" required></label>
+   <label>Email<input id="se" type="email" autocomplete="username" placeholder="you@college.edu" required></label>
+   <div class="r"><label>Password (min 8)<span class="pw"><input id="sp" type="password" minlength="8" autocomplete="new-password" required><button type="button" aria-label="Show password">Show</button></span></label><label>Confirm password<span class="pw"><input id="sc" type="password" autocomplete="new-password" required><button type="button" aria-label="Show password">Show</button></span></label></div>
+   <div class="msg" id="sm" role="alert"></div><button class="btn" type="submit">Create account</button>
+   <p class="foot">We will email you a 6-digit code to verify your address, then you can register your team.<br>Already registered? <a href="#" data-go="lf">Log in</a></p></form>
+  <form class="g hide" id="vf"><h2>Verify your email</h2><p id="vt" class="sub2"></p>
+   <label>6-digit code<input id="vc" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" required style="font-size:24px;letter-spacing:10px;text-align:center"></label>
+   <div class="msg" id="vm" role="alert"></div><button class="btn" type="submit">Verify and continue</button> <button class="btn o" type="button" id="rc">Resend code</button>
+   <p class="foot">Check your spam folder if it does not arrive. The code expires in 10 minutes.<br><a href="#" id="bk">Use a different email</a></p></form>
+  </div>
+ </div>
+
+ <div id="app" class="hide">
+  <div class="steps" id="steps"></div>
+  <div id="tinfo" class="cols hide">
+   <div class="g pad" style="text-align:center"><div class="badge" id="bd"><div id="bdt"></div></div><h2 id="tn" style="margin-top:16px"></h2><div>Status: <span class="chip" id="st"></span></div><p style="color:var(--mu);font-size:13px" id="who"></p></div>
+   <div class="g pad"><h2>Event timeline</h2>
+    <div class="li"><span>Kickoff</span><span>10 Oct, 11:00 AM</span></div><div class="li"><span>First judging</span><span>10 Oct, 6:00 PM</span></div><div class="li"><span>Finals and results</span><span>11 Oct, 9:00 PM</span></div>
+    <p style="color:var(--cy);font:700 15px 'Chakra Petch'" id="cd"></p></div>
+   <div class="g pad"><h2>Announcements</h2><div id="an"></div></div>
+  </div>
+  <form class="g pad" id="tf">
+   <h2 id="fh">Register your team</h2>
+   <div class="r"><label>Team name<input name="team" required maxlength="80"></label><label>Team size<select name="size" id="sz"><option>2</option><option>3</option><option>4</option></select></label></div>
+   <div class="r"><label>College name<input name="college" required maxlength="120"></label><label>Valid ID number<input name="idn" required maxlength="60"></label></div>
+   <div class="r"><label>ID card (optional, image or PDF, max 1.4 MB)<input type="file" name="idf" accept="image/*,.pdf"><small id="idn2" style="color:var(--cy)"></small></label><label>Domain<select name="domain" id="ds"></select></label></div>
+
+   <label>Team leader name<input name="ln" required maxlength="80"></label>
+   <p style="margin:0 0 12px;font-size:13px;color:var(--mu)" id="lemail"></p>
+   <div id="mem"></div>
+   <div class="msg" id="tm" role="alert"></div>
+   <button class="btn" id="sb" type="submit">Submit registration</button>
+  </form>
+ </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="common.js"></script><script src="bg.js"></script>
+<script>
+let team=null;const tf=$('#tf'),sz=$('#sz'),mem=$('#mem');
+const collect=()=>{const m=[];for(let i=2;i<=4;i++){const n=tf['mn'+i];if(n)m.push({name:n.value,email:tf['me'+i].value})}return m};
+function members(l=[]){mem.innerHTML='';for(let i=2;i<=+sz.value;i++){const m=l[i-2]||{};mem.insertAdjacentHTML('beforeend',`<div class="r"><label>Member ${i} name<input name="mn${i}" value="${esc(m.name)}" required maxlength="80"></label><label>Member ${i} email<input name="me${i}" type="email" value="${esc(m.email)}" required></label></div>`)}}
+sz.onchange=()=>members(collect());
+
+document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));$('#lf').classList.toggle('hide',b.dataset.t!=='lf');$('#sf').classList.toggle('hide',b.dataset.t!=='sf')});
+const showAuth=()=>{$('#auth').classList.remove('hide');$('#app').classList.add('hide');$('#lo').classList.add('hide')};
+$('#lo').onclick=()=>{localStorage.removeItem(TK);location.reload()};
+let pend='',ct;
+function cool(s){clearInterval(ct);const b=$('#rc');b.disabled=s>0;b.textContent=s>0?'Resend in '+s+'s':'Resend code';if(s>0)ct=setInterval(()=>{s--;b.disabled=s>0;b.textContent=s>0?'Resend in '+s+'s':'Resend code';if(s<=0)clearInterval(ct)},1000)}
+function showVerify(email,msg,wait){pend=email;['tbs','lf','sf'].forEach(i=>$('#'+i).classList.add('hide'));$('#vf').classList.remove('hide');$('#vt').textContent='We sent a 6-digit code to '+email+'. Enter it to activate your account.';$('#vm').className='msg';$('#vm').textContent=msg||'';$('#vc').value='';$('#vc').focus();cool(wait)}
+$('#lf').onsubmit=async e=>{e.preventDefault();$('#lm').textContent='';const email=$('#le').value;try{const r=await api('/login',{method:'POST',body:{email,password:$('#lp').value}});if(r.role!=='participant'){$('#lm').textContent='This is an admin account. Use the Admin portal.';return}localStorage.setItem(TK,r.token);load()}catch(x){if(x.data&&x.data.needsVerification)showVerify(email,x.message,0);else $('#lm').textContent=x.message}};
+$('#sf').onsubmit=async e=>{e.preventDefault();if($('#sp').value!==$('#sc').value){$('#sm').textContent='Passwords do not match.';return}
+ const email=$('#se').value;try{await api('/signup',{method:'POST',body:{name:$('#sn').value,email,password:$('#sp').value}});showVerify(email,'',60)}catch(x){if(x.data&&x.data.needsVerification)showVerify(email,x.message,0);else if(x.data&&x.data.error==='This email already has an account. Log in instead.'){document.querySelector('[data-t="lf"]').click();$('#le').value=email;$('#lp').value='';$('#lm').textContent='An account already exists for this email. Log in with its existing password.';$('#lp').focus()}else $('#sm').textContent=x.message}};
+$('#vf').onsubmit=async e=>{e.preventDefault();try{const r=await api('/verify-email',{method:'POST',body:{email:pend,code:$('#vc').value}});localStorage.setItem(TK,r.token);load()}catch(x){$('#vm').className='msg';$('#vm').textContent=x.message}};
+$('#rc').onclick=async()=>{try{await api('/resend-code',{method:'POST',body:{email:pend}});$('#vm').className='msg ok';$('#vm').textContent='A new code is on its way.';cool(60)}catch(x){$('#vm').className='msg';$('#vm').textContent=x.message}};
+$('#bk').onclick=e=>{e.preventDefault();$('#vf').classList.add('hide');$('#tbs').classList.remove('hide');$('#sf').classList.remove('hide');document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x.dataset.t==='sf'))};
+async function load(){
+ if(!tok())return showAuth();
+ try{
+  const [me,doms,ann]=await Promise.all([api('/me'),api('/domains'),api('/announcements')]);
+  if(me.user.role!=='participant')throw new Error('admin');
+  team=me.team;$('#auth').classList.add('hide');$('#app').classList.remove('hide');$('#lo').classList.remove('hide');
+  $('#ds').innerHTML=doms.map(d=>`<option>${esc(d.name)}</option>`).join('');
+  $('#steps').innerHTML=[['Email verified',1],['Team registered',!!team],['Approved by organizers',team&&team.status==='Approved']].map(([n,d],i)=>`<div class="${d?'done':''}">${d?'✓':i+1}. ${n}</div>`).join('');
+  $('#tinfo').classList.toggle('hide',!team);$('#fh').textContent=team?'Team details':'Register your team';$('#sb').textContent=team?'Save changes':'Submit registration';
+  $('#lemail').textContent='Leader email: '+me.user.email;tf.ln.value=team?team.leader.name:me.user.name;tf.ln.disabled=!!team;
+  if(team){
+   $('#tn').textContent=team.name;$('#who').textContent=team.college+' · '+team.domain;const st=$('#st');st.textContent=team.status;st.className='chip '+team.status;$('#bd').className='badge '+team.status;$('#bdt').textContent=team.status;
+   tf.team.value=team.name;sz.value=team.size;tf.college.value=team.college;tf.idn.value=team.idNumber;tf.domain.value=team.domain;members(team.members);$('#idn2').textContent=team.hasId?'ID card on file. Upload a new one to replace it.':'';
+   $('#an').innerHTML=ann.length?ann.map(a=>`<div class="li"><span>${esc(a.message)}</span><span style="color:var(--mu)">${new Date(a.createdAt).toLocaleDateString()}</span></div>`).join(''):'<p style="color:var(--mu)">No announcements yet.</p>';
+  }else{const d=new URLSearchParams(location.search).get('domain');if(d&&[...$('#ds').options].some(o=>o.value===d))tf.domain.value=d;members(collect())}
+
+ }catch(e){localStorage.removeItem(TK);showAuth();if(e.message==='admin')$('#lm').textContent='This is an admin account. Use the Admin portal.'}
+}
+tf.onsubmit=async e=>{e.preventDefault();const er=$('#tm');er.className='msg';
+ const o={team:tf.team.value,size:tf.size.value,college:tf.college.value,idn:tf.idn.value,domain:tf.domain.value,ps:'Provided on spot',ln:tf.ln.value,members:collect()};
+ const f=tf.idf.files[0];if(f){if(f.size>1.4e6){er.textContent='ID card must be under 1.4 MB.';return}o.idFile=await new Promise(r=>{const x=new FileReader();x.onload=()=>r(x.result);x.readAsDataURL(f)})}
+ const b=$('#sb'),first=!team;b.disabled=true;
+ try{await api(first?'/team':'/me/team',{method:first?'POST':'PUT',body:o});await load();$('#tm').className='msg ok';$('#tm').textContent=first?'Team registered. Your status is Pending until the organizers approve it.':'Changes saved.';if(first){boom();scrollTo({top:0,behavior:'smooth'})}}
+ catch(x){er.textContent=x.message}finally{b.disabled=false}};
+const T=new Date('2026-10-10T11:00:00+05:30').getTime();setInterval(()=>{const s=Math.max(0,(T-Date.now())/1000|0);$('#cd').textContent=`Kickoff in ${s/86400|0}d ${s/3600%24|0}h ${s/60%60|0}m ${s%60}s`},1000);
+const fx=$('#fx'),fc=fx.getContext('2d');let P=[];
+function boom(){const w=fx.width=innerWidth,h=fx.height=innerHeight;P=[...Array(180)].map(()=>({x:w/2,y:h/3,vx:(Math.random()-.5)*18,vy:-Math.random()*16-4,s:4+Math.random()*7,r:Math.random()*6,c:['#19e6ff','#8a5cff','#ff3df2','#fff'][Math.random()*4|0],l:150}));
+ (function f(){fc.clearRect(0,0,w,h);P=P.filter(p=>p.l-->0);P.forEach(p=>{p.vy+=.35;p.x+=p.vx;p.y+=p.vy;p.r+=.2;fc.save();fc.translate(p.x,p.y);fc.rotate(p.r);fc.globalAlpha=p.l/150;fc.fillStyle=p.c;fc.shadowColor=p.c;fc.shadowBlur=10;fc.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);fc.restore()});if(P.length)requestAnimationFrame(f)})()}
+document.querySelectorAll('.pw button').forEach(b=>b.onclick=()=>{const i=b.previousElementSibling,h=i.type==='password';i.type=h?'text':'password';b.textContent=h?'Hide':'Show';b.setAttribute('aria-label',(h?'Hide':'Show')+' password')});
+document.querySelectorAll('[data-go]').forEach(a=>a.onclick=e=>{e.preventDefault();document.querySelector('.tab[data-t="'+a.dataset.go+'"]').click()});
+load();
+</script></body></html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Admin Portal | KLE Hackathon 2K26</title>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head><body>
+<canvas id="bg"></canvas>
+<div class="scene" aria-hidden="true"><div class="ph"></div><div class="gridfx"></div></div>
+<div class="wrap">
+ <div class="top"><h1>Admin portal</h1><div><span id="upd" style="color:var(--mu);font-size:12px;margin-right:12px"></span><a href="/" class="btn o s" style="text-decoration:none; margin-right:14px">Back</a><button class="btn o s hide" id="lo">Log out</button></div></div>
+ <div class="auth-solo"><form id="login" class="ac hide" style="width:100%;max-width:440px">
+  <div class="hero" style="margin-bottom:18px"><div class="crest"><b>KLE</b>Hackathon 2K26 &middot; Organizers</div></div>
+  <h2>Admin log in</h2><p class="sub2">Manage teams, domains and announcements.</p>
+  <label>Email<input id="em" type="email" autocomplete="username" placeholder="admin@example.com" required></label>
+  <label>Password<span class="pw"><input id="pw" type="password" autocomplete="current-password" placeholder="Your password" required><button type="button" aria-label="Show password">Show</button></span></label>
+  <div class="msg" id="lm" role="alert"></div><button class="btn" type="submit">Log in</button></form></div>
+
+ <div id="dash" class="hide">
+  <div class="tabs" id="tabs"><button class="tab on" data-p="ov">Overview</button><button class="tab" data-p="tm">Registered teams</button><button class="tab" data-p="dm">Domains</button><button class="tab" data-p="an">Announcements</button></div>
+
+  <div id="ov">
+   <div class="cols" id="stats"></div>
+   <div class="cols">
+    <div class="g pad"><h2>Approval status</h2><div class="lg" id="dn"></div></div>
+    <div class="g pad"><h2>Registrations per day</h2><div class="days" id="dy"></div></div>
+    <div class="g pad"><h2>By domain</h2><div id="bd"></div></div>
+    <div class="g pad"><h2>By team size</h2><div id="bs"></div></div>
+   </div>
+  </div>
+
+  <div id="tm" class="hide g pad">
+   <div class="top" style="margin-bottom:12px"><h2 style="margin:0" id="cnt">Registered teams</h2><div><button class="btn o s" id="rs">Reset filters</button> <button class="btn s" id="csv">Export CSV</button></div></div>
+   <div class="r" style="grid-template-columns:2fr 1fr 1fr;margin-bottom:10px"><input id="q" placeholder="Search team, college, leader or email" aria-label="Search"><select id="fd" aria-label="Domain filter"></select><select id="fs" aria-label="Status filter"><option value="">All statuses</option><option>Pending</option><option>Approved</option><option>Rejected</option></select></div>
+   <div class="sc"><table><thead><tr><th>#</th><th>Team</th><th>Leader</th><th>College</th><th>Domain</th><th>Size</th><th>Status</th><th>Registered</th><th>Actions</th></tr></thead><tbody id="tb"></tbody></table></div>
+  </div>
+
+  <div id="dm" class="hide g pad"><h2>Domains</h2><div id="dl"></div>
+   <label style="margin-top:14px">Domain name<input id="dn1"></label><label>Description<input id="dd"></label><input type="hidden" id="did">
+   <div class="msg" id="dmsg" role="alert"></div><button class="btn s" id="dsv">Save domain</button> <button class="btn o s" id="dc">Clear</button></div>
+
+  <div id="an" class="hide g pad"><h2>Announcements</h2><div id="al"></div>
+   <label style="margin-top:14px">New announcement (shown in the ticker and every participant dashboard)<textarea id="am" style="min-height:70px"></textarea></label>
+   <div class="msg" id="amsg" role="alert"></div><button class="btn s" id="ap">Post announcement</button></div>
+ </div>
+</div>
+<dialog id="dg"><div class="pad" id="dgc"></div><div class="pad" style="padding-top:0" id="dga"></div></dialog>
+<script>window.TK='atoken'</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="common.js"></script><script src="bg.js"></script>
+<script>
+let doms=[];const cnt=(s,n)=>(s.byStatus.find(x=>x._id===n)||{count:0}).count;
+const card=(n,l)=>`<div class="g pad stat">${n}<small>${l}</small></div>`;
+const bars=(l,k)=>{const m=Math.max(1,...l.map(x=>x.count));return l.map(x=>`<div class="bar"><span>${esc(k?k+' '+x._id:x._id)}</span><i style="width:${x.count/m*100}%"></i><b>${x.count}</b></div>`).join('')||'<p style="color:var(--mu)">No data yet.</p>'};
+function fail(e){if(e.message==='Please log in.'||e.message==='Admins only.'){localStorage.removeItem(TK);location.reload()}else alert(e.message)}
+async function stats(){const s=await api('/admin/stats');
+ $('#stats').innerHTML=card(s.total,'Teams registered')+card(s.participants,'Participants in those teams')+card(cnt(s,'Pending'),'Pending review')+card(cnt(s,'Approved'),'Approved')+card(cnt(s,'Rejected'),'Rejected')+card(Math.max(0,s.signups-s.total),'Signed up, no team yet');
+ const col={Pending:'#ffd45e',Approved:'#3dffa8',Rejected:'#ff6f91'};let a=0;const seg=Object.keys(col).map(n=>{const v=s.total?cnt(s,n)/s.total*100:0;const r=`${col[n]} ${a}% ${a+v}%`;a+=v;return r});
+ $('#dn').innerHTML=`<div class="donut" style="background:conic-gradient(${s.total?seg.join(','):'#2a2850 0 100%'})"></div><div>${Object.keys(col).map(n=>`<span><i style="background:${col[n]}"></i>${n}: ${cnt(s,n)}</span>`).join('')}</div>`;
+ const m=Math.max(1,...s.byDay.map(x=>x.count));$('#dy').innerHTML=s.byDay.map(x=>`<div title="${x._id}: ${x.count}"><b>${x.count}</b><i style="height:${x.count/m*80}%"></i>${x._id.slice(5)}</div>`).join('')||'<p style="color:var(--mu)">No registrations yet.</p>';
+ $('#bd').innerHTML=bars(s.byDomain);$('#bs').innerHTML=bars(s.bySize,'Size')}
+async function teams(){const p=new URLSearchParams({search:$('#q').value,domain:$('#fd').value,status:$('#fs').value});const l=await api('/admin/teams?'+p);
+ $('#cnt').textContent=`Registered teams (${l.length})`;
+ $('#tb').innerHTML=l.map((t,i)=>`<tr><td>${i+1}</td><td><b>${esc(t.name)}</b></td><td>${esc(t.leader.name)}<br><small style="color:var(--mu)">${esc(t.leader.email)}</small></td><td>${esc(t.college)}</td><td>${esc(t.domain)}</td><td>${t.size}</td><td><span class="chip ${t.status}">${t.status}</span></td><td>${new Date(t.createdAt).toLocaleDateString()}</td>
+ <td style="white-space:nowrap"><button class="btn o s" data-v="${t._id}">View</button> <button class="btn s" data-s="Approved" data-id="${t._id}">Approve</button> <button class="btn bad s" data-s="Rejected" data-id="${t._id}">Reject</button></td></tr>`).join('')||'<tr><td colspan="9" style="color:var(--mu)">No teams match these filters.</td></tr>'}
+async function setStatus(id,s){try{await api('/admin/teams/'+id,{method:'PUT',body:{status:s}});await Promise.all([teams(),stats()])}catch(e){fail(e)}}
+async function view(id){try{const t=await api('/admin/teams/'+id);
+ const f=t.idFile?(t.idFile.startsWith('data:image')?`<img src="${esc(t.idFile)}" alt="ID card" style="max-width:100%;border-radius:8px">`:`<a download="id-card.pdf" href="${esc(t.idFile)}">Download ID card (PDF)</a>`):'<span style="color:var(--mu)">No file uploaded</span>';
+ $('#dgc').innerHTML=`<h2>${esc(t.name)} <span class="chip ${t.status}">${t.status}</span></h2><p>${esc(t.college)} · ID ${esc(t.idNumber)} · ${esc(t.domain)} · ${t.size} members · registered ${new Date(t.createdAt).toLocaleString()}</p><p><b>Leader:</b> ${esc(t.leader.name)} (${esc(t.leader.email)})</p>${t.members.map(m=>`<p style="margin:4px 0"><b>Member:</b> ${esc(m.name)} (${esc(m.email)})</p>`).join('')}<h3 style="margin-top:14px">Problem statement</h3><p style="white-space:pre-wrap">${esc(t.problemStatement)}</p><h3>ID card</h3>${f}`;
+ $('#dga').innerHTML=`<button class="btn s" data-s="Approved">Approve</button> <button class="btn bad s" data-s="Rejected">Reject</button> <button class="btn o s" data-s="Pending">Set pending</button> <button class="btn o s" data-del="1">Delete team</button> <button class="btn o s" data-close="1">Close</button>`;
+ $('#dga').dataset.id=id;$('#dg').showModal()}catch(e){fail(e)}}
+$('#dga').onclick=async e=>{const b=e.target.closest('button');if(!b)return;const id=$('#dga').dataset.id;
+ if(b.dataset.close)return $('#dg').close();
+ if(b.dataset.del){if(!confirm('Delete this team and its participant account? This cannot be undone.'))return;await api('/admin/teams/'+id,{method:'DELETE'});$('#dg').close();await Promise.all([teams(),stats()]);return}
+ await setStatus(id,b.dataset.s);$('#dg').close()};
+$('#tb').onclick=e=>{const b=e.target.closest('button');if(!b)return;b.dataset.v?view(b.dataset.v):setStatus(b.dataset.id,b.dataset.s)};
+let tm;['q','fd','fs'].forEach(i=>$('#'+i).addEventListener('input',()=>{clearTimeout(tm);tm=setTimeout(teams,250)}));
+$('#rs').onclick=()=>{$('#q').value=$('#fd').value=$('#fs').value='';teams()};
+$('#csv').onclick=async()=>{const r=await api('/admin/export-csv',{raw:true});if(!r.ok)return alert('Export failed');const a=document.createElement('a');a.href=URL.createObjectURL(await r.blob());a.download='registrations.csv';a.click()};
+async function domains(){doms=await api('/domains');const cur=$('#fd').value;$('#fd').innerHTML='<option value="">All domains</option>'+doms.map(d=>`<option>${esc(d.name)}</option>`).join('');$('#fd').value=cur;
+ $('#dl').innerHTML=doms.map(d=>`<div class="li"><span><b>${esc(d.name)}</b><br><small style="color:var(--mu)">${esc(d.description)}</small></span><span><button class="btn o s" data-e="${d._id}">Edit</button> <button class="btn bad s" data-x="${d._id}">Delete</button></span></div>`).join('')}
+$('#dl').onclick=async e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.e){const d=doms.find(x=>x._id===b.dataset.e);$('#did').value=d._id;$('#dn1').value=d.name;$('#dd').value=d.description}
+ else if(confirm('Delete this domain? Existing teams keep their domain name.')){await api('/admin/domains/'+b.dataset.x,{method:'DELETE'});domains()}};
+const clr=()=>{$('#did').value=$('#dn1').value=$('#dd').value=''};$('#dc').onclick=clr;
+$('#dsv').onclick=async()=>{try{const id=$('#did').value;await api('/admin/domains'+(id?'/'+id:''),{method:id?'PUT':'POST',body:{name:$('#dn1').value,description:$('#dd').value}});$('#dmsg').textContent='';clr();domains()}catch(e){$('#dmsg').textContent=e.message}};
+async function ann(){const l=await api('/announcements');$('#al').innerHTML=l.map(a=>`<div class="li"><span>${esc(a.message)}</span><button class="btn bad s" data-x="${a._id}">Delete</button></div>`).join('')||'<p style="color:var(--mu)">No announcements yet.</p>'}
+$('#al').onclick=async e=>{const b=e.target.closest('button');if(b){await api('/admin/announcements/'+b.dataset.x,{method:'DELETE'});ann()}};
+$('#ap').onclick=async()=>{try{await api('/admin/announcements',{method:'POST',body:{message:$('#am').value}});$('#am').value='';$('#amsg').textContent='';ann()}catch(e){$('#amsg').textContent=e.message}};
+$('#tabs').onclick=e=>{const b=e.target.closest('.tab');if(!b)return;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));['ov','tm','dm','an'].forEach(p=>$('#'+p).classList.toggle('hide',p!==b.dataset.p))};
+async function refresh(){try{await Promise.all([stats(),teams()]);$('#upd').textContent='Updated '+new Date().toLocaleTimeString()}catch(e){fail(e)}}
+async function load(){if(!tok())return $('#login').classList.remove('hide');
+ try{await Promise.all([domains(),ann()]);await refresh();$('#login').classList.add('hide');$('#dash').classList.remove('hide');$('#lo').classList.remove('hide');setInterval(()=>{if(!document.hidden&&!$('#dg').open)refresh()},30000)}
+ catch(e){localStorage.removeItem(TK);$('#login').classList.remove('hide');$('#lm').textContent=e.message==='Please log in.'?'':e.message}}
+$('#login').onsubmit=async e=>{e.preventDefault();try{const r=await api('/login',{method:'POST',body:{email:$('#em').value,password:$('#pw').value}});if(r.role!=='admin'){$('#lm').textContent='This account is not an admin.';return}localStorage.setItem(TK,r.token);load()}catch(x){$('#lm').textContent=x.message}};
+$('#lo').onclick=()=>{localStorage.removeItem(TK);location.reload()};load();
+</script>
+<script>document.querySelectorAll('.pw button').forEach(b=>b.onclick=()=>{const i=b.previousElementSibling,h=i.type==='password';i.type=h?'text':'password';b.textContent=h?'Hide':'Show';b.setAttribute('aria-label',(h?'Hide':'Show')+' password')});</script></body></html>
