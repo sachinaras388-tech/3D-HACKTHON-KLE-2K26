@@ -51,12 +51,38 @@ router.post('/signup', async (req, res) => {
   const name = str(req.body.name, 80), email = str(req.body.email, 120).toLowerCase(), pw = String(req.body.password || '');
   if (!name || !EMAIL.test(email)) return res.status(400).json({ error: 'Enter your name and a valid email.' });
   if (pw.length < 8) return res.status(400).json({ error: 'Password must be at least 8 characters.' });
-  let u = await User.findOne({ email });
-  if (u && u.emailVerified) return res.status(409).json({ error: 'This email already has an account. Log in instead.' });
+  
+  let u;
+  try {
+    u = await User.findOne({ email });
+  } catch (err) {
+    console.error('DB find error:', err.message);
+    return res.status(500).json({ error: 'Database error. Please try again.' });
+  }
+
+  if (u && u.emailVerified) return res.status(409).json({ error: 'An account with this email already exists.' });
+  
   const password = await bcrypt.hash(pw, 10);
   if (u) { u.name = name; u.password = password; } else u = new User({ name, email, password, role: 'participant' });
-  try { await issueOtp(u); }
-  catch (e) { console.error('OTP email failed:', e.message); return res.status(502).json({ error: MAIL_FAIL, needsVerification: true, email }); }
+  
+  const code = String(crypto.randomInt(100000, 1000000));
+  u.otpHash = hashCode(u.email, code); u.otpExpires = new Date(Date.now() + 10 * 60 * 1000); u.otpAttempts = 0; u.otpSentAt = new Date();
+  
+  try {
+    await u.save();
+  } catch (err) {
+    if (err.code === 11000) return res.status(409).json({ error: 'An account with this email already exists.' });
+    console.error('DB save error:', err.message);
+    return res.status(500).json({ error: 'Database error. Please try again.' });
+  }
+
+  try { 
+    await sendOtp(u, code); 
+  } catch (e) { 
+    console.error('OTP email failed:', e.message); 
+    return res.status(502).json({ error: MAIL_FAIL, needsVerification: true, email }); 
+  }
+  
   res.status(201).json({ ok: true, needsVerification: true, email });
 });
 

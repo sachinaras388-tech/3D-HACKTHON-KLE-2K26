@@ -34,7 +34,7 @@ async function connect() {
   if (!process.env.MONGODB_URI) throw new Error('Missing MONGODB_URI in environment.');
   if (!process.env.JWT_SECRET) throw new Error('Missing JWT_SECRET in environment.');
   if (cache.conn) return cache.conn;
-  if (!cache.promise) cache.promise = mongoose.connect(process.env.MONGODB_URI).then(async (m) => { await seed(); return m; });
+  if (!cache.promise) cache.promise = mongoose.connect(process.env.MONGODB_URI, { serverSelectionTimeoutMS: 5000 }).then(async (m) => { await seed(); return m; });
   try { cache.conn = await cache.promise; } catch (e) { cache.promise = null; throw e; }
   return cache.conn;
 }
