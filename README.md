@@ -50,9 +50,21 @@ Participants must verify their email before they can log in: sign up → a 6-dig
 `SMTP_HOST=smtp.gmail.com`, `SMTP_PORT=587`, `SMTP_USER=youraddress@gmail.com`, `SMTP_PASS=<16-character app password>`, `MAIL_FROM="KLE Hackathon 2K26 <youraddress@gmail.com>"`.
 Gmail allows about 500 emails per day. For more, use Brevo, Mailgun or SendGrid SMTP credentials in the same variables.
 
-**Test it:** `npm run test-mail -- you@example.com` checks the SMTP login and sends a test email.
+**Test it:** `npm run test-mail -- you@example.com` sends a test email via the selected API provider, or checks SMTP login and sends a test email when using SMTP.
 
-If `SMTP_HOST` is empty and `NODE_ENV` is not `production`, the code is printed in the server console so you can develop without email. In production (including Render and Vercel) SMTP is required.
+### Email APIs (recommended for Render Free)
+
+Render Free services block outbound SMTP. To send verification messages from a free Render service, choose one provider and set its API key in the Render environment:
+
+| Provider | `MAIL_PROVIDER` | API key variable |
+|---|---|---|
+| Resend | `resend` | `RESEND_API_KEY` |
+| Brevo | `brevo` | `BREVO_API_KEY` |
+| SendGrid | `sendgrid` | `SENDGRID_API_KEY` |
+
+Also set `MAIL_FROM` to a sender address verified with that provider. The API key setting must match `MAIL_PROVIDER`. The app uses the provider's HTTPS API, so SMTP settings are not required when an API provider is selected.
+
+If `MAIL_PROVIDER` and `SMTP_HOST` are both empty and `NODE_ENV` is not `production`, the code is printed in the server console for local development. In production, configure either an email API provider or SMTP.
 
 
 ```bash
@@ -68,7 +80,9 @@ Set these in `.env`:
 | `MONGODB_URI` | Atlas connection string from step 1 |
 | `JWT_SECRET` | Long random string. Generate: `node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"` |
 | `ADMIN_EMAIL`, `ADMIN_PASSWORD` | The first admin account, created automatically on first start |
-| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `MAIL_FROM` | SMTP account that sends verification codes and confirmations (see SMTP setup) |
+| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` | Optional SMTP server settings; not suitable for Render Free, which blocks outbound SMTP |
+| `MAIL_PROVIDER`, `RESEND_API_KEY`, `BREVO_API_KEY`, `SENDGRID_API_KEY` | Select and authenticate one email API provider for verification codes and confirmations |
+| `MAIL_FROM` | Sender address verified with the selected email provider, or SMTP sender |
 
 Pages: `/` (site), `/portal.html` (participants), `/admin.html` (admins).
 
@@ -76,7 +90,7 @@ Pages: `/` (site), `/portal.html` (participants), `/admin.html` (admins).
 
 1. Create a **Web Service** in Render and connect this repository. Set the root directory to the project folder containing `package.json`.
 2. Use `npm install` as the build command and `npm start` as the start command. The Express server serves both the API and the files in `public/`.
-3. Add the environment variables from the table above in the Render service settings. In particular, signup requires working `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, and `MAIL_FROM` settings so verification codes can be sent. For Gmail, use an App Password, not the account password.
+3. Add the environment variables from the table above in the Render service settings. On Render Free, configure `MAIL_PROVIDER`, its matching API key, and a verified `MAIL_FROM` address; SMTP egress is blocked. Paid services can use a supported SMTP server if preferred.
 4. In MongoDB Atlas **Network Access**, allow connections from the deployed service. For a quick setup, `0.0.0.0/0` allows connections from anywhere; use tighter network rules if your hosting plan supports stable outbound IPs.
 5. Deploy, then check the Render service logs if signup fails. `OTP email failed` indicates an SMTP problem; `Database error` or `Database connection failed` indicates MongoDB configuration or connectivity.
 
